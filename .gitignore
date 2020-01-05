@@ -2,3 +2,5 @@ build.gradle
 gradlew.bat
 gradlew
 settings.gradle
+.gradle
+.idea
