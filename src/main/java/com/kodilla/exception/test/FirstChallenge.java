@@ -1,5 +1,4 @@
 package com.kodilla.exception.test;
-
 import java.time.LocalTime;
 
 public class FirstChallenge {
