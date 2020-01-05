@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.kodilla.stream.ArrayOperationsTestSuite" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-05T09:51:47" hostname="DESKTOP-AM66QJL" time="0.009">
+  <properties/>
+  <testcase name="testGetAverage" classname="com.kodilla.stream.ArrayOperationsTestSuite" time="0.009"/>
+  <system-out><![CDATA[4.75
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
