@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1d533d7-67bc-4044-b066-1028b8ffaca8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/kodilla/stream/beautifier/PoemBeautifier.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/kodilla/stream/beautifier/PoemDecorator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/kodilla/stream/beautifier/StreamMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +101,7 @@
       <workItem from="1577378144089" duration="10000" />
       <workItem from="1577480196641" duration="967000" />
       <workItem from="1577881658772" duration="801000" />
-      <workItem from="1578209329992" duration="2556000" />
+      <workItem from="1578209329992" duration="3087000" />
     </task>
     <servers />
   </component>
