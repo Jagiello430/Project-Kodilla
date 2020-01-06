@@ -1,11 +1,11 @@
 package com.kodilla.testing.shape;
 
-public class Circle implements Shape {
-    String name = "Circle";
-    int radius;
-    double resultArea;
+public final class Circle implements Shape {
+    private final String name;
+    private final int radius;
+    private final double resultArea;
 
-    public Circle(String name, int radius, double resultArea){
+    public Circle(final String name,final int radius,final double resultArea){
         this.name = name;
         this.radius = radius;
         this.resultArea = resultArea;
@@ -22,14 +22,13 @@ public class Circle implements Shape {
     }
 
     @Override
-    public void getShapeName(String name) {
-        System.out.println(name);
+    public String getShapeName(String name) {
+        return name;
     }
 
     @Override
-    public void getField() {
-        resultArea = Math.PI * Math.pow(radius,2);
-        System.out.println(resultArea);
+    public double getField() {
+        return Math.PI * Math.pow(radius,2);
     }
 
     @Override

@@ -1,12 +1,12 @@
 package com.kodilla.testing.shape;
 
-public class Triangle implements Shape {
-    String name = "Triangle";
-    int base;
-    int height;
-    double resultArea;
+public final class Triangle implements Shape {
+    private final String name;
+    private final int base;
+    private final int height;
+    private final double resultArea;
 
-    public Triangle (String name, int base, int height, double resultArea){
+    public Triangle (final String name,final int base,final int height,final double resultArea){
         this.name = name;
         this.base = base;
         this.height = height;
@@ -26,13 +26,12 @@ public class Triangle implements Shape {
     }
 
     @Override
-    public void getShapeName(String name) {
-        System.out.println(name);
+    public String getShapeName(String name) {
+        return name;
     }
     @Override
-    public void getField() {
-        resultArea = ((base * height) / 2);
-        System.out.println(resultArea);;
+    public double getField() {
+        return (base * height) / 2;
     }
 
     @Override

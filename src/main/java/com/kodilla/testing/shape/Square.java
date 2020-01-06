@@ -1,11 +1,11 @@
 package com.kodilla.testing.shape;
 
-public class Square implements Shape {
-    String name = "Square";
-    int side;
-    double resultArea;
+public final class Square implements Shape {
+    private final String name;
+    private final int side;
+    private final double resultArea;
 
-    public Square(String name, int side, double resultArea){
+    public Square(final String name,final int side,final double resultArea){
         this.name = name;
         this.side = side;
         this.resultArea = resultArea;
@@ -21,15 +21,12 @@ public class Square implements Shape {
     }
 
     @Override
-    public void getShapeName(String name) {
-        System.out.println(name);
-
+    public String getShapeName(String name) {
+        return name;
     }
     @Override
-    public void getField() {
-        resultArea = Math.pow(side,2);
-        System.out.println(resultArea);
-
+    public double getField() {
+        return Math.pow(side,2);
     }
 
     @Override
