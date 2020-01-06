@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.kodilla.stream.beautifier.TestPoemBeautifier" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-01-05T14:41:20" hostname="DESKTOP-AM66QJL" time="0.003">
-  <properties/>
-  <testcase name="testPoemBeautifier" classname="com.kodilla.stream.beautifier.TestPoemBeautifier" time="0.003"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
