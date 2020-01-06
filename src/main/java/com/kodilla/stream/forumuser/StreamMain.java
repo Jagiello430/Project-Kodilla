@@ -8,7 +8,7 @@ public class StreamMain {
         Forum forum = new Forum();
 
         Map<Integer, ForumUser> listAfterFilter = forum.listWithUser.stream()
-                .filter( x -> x.getSex() != 'F')
+                .filter( x -> x.getSex() != Sex.FEMALE)
                 .filter(x -> x.getBirthday().getYear()<2000)
                 .filter(x -> x.getNumberOfPublishedPosts() > 0)
                 .collect(Collectors.toMap(ForumUser::getUniqueUserID, x -> x));

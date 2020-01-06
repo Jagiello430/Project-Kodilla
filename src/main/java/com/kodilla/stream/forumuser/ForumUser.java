@@ -6,11 +6,11 @@ public final class ForumUser {
 
     private final int uniqueUserID;
     private final String userName;
-    private final char sex;
+    private Sex sex;
     private final LocalDate birthday;
     private final int numberOfPublishedPosts;
 
-    public ForumUser(final int uniqueUserID, final String userName,final char sex,
+    public ForumUser(final int uniqueUserID, final String userName,Sex sex,
                      final int yearOfBirthday, final int monthOfBirthday,final
                      int dayOfMonth,final int numberOfPublishedPosts){
         this.uniqueUserID = uniqueUserID;
@@ -20,6 +20,7 @@ public final class ForumUser {
         this.numberOfPublishedPosts = numberOfPublishedPosts;
     }
 
+
     public int getUniqueUserID() {
         return uniqueUserID;
     }
@@ -28,7 +29,7 @@ public final class ForumUser {
         return userName;
     }
 
-    public char getSex() {
+    public Enum getSex() {
         return sex;
     }
 
