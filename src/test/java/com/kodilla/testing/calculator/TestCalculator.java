@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class TestCalculator {
+
     @Test
     public void testMain(){
         Method method = new Method();
