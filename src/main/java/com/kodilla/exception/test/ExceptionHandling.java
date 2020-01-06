@@ -1,7 +1,5 @@
 package com.kodilla.exception.test;
 
-import java.time.LocalTime;
-
 public class ExceptionHandling extends Exception{
     public static void main(String[] args) {
         SecondChallenge secondChallenge = new SecondChallenge();
@@ -11,8 +9,6 @@ public class ExceptionHandling extends Exception{
          catch (Exception e) {
             System.out.println("Somethink is wrong" + e);
             e.printStackTrace();
-        } finally {
-            LocalTime.now();
         }
     }
 }
