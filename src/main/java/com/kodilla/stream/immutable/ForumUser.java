@@ -11,7 +11,7 @@ public final class ForumUser {
     private final List<ForumUser> friends;
 
     public ForumUser(final String userName, final String realName, final int yearsOfBirthday,
-                     final int monthOfBirthday, final int dayOfMonth,final List friends) {
+                     final int monthOfBirthday, final int dayOfMonth,final List <ForumUser> friends) {
         this.userName = userName;
         this.realName = realName;
         this.birthDate = new Date(yearsOfBirthday,monthOfBirthday,dayOfMonth);
