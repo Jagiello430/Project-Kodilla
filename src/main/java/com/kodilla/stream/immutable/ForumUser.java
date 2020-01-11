@@ -28,6 +28,6 @@ public final class ForumUser {
         return birthDate;
     }
     public ArrayList<String> getFriends() {
-        return (ArrayList<String>) friends;
+        return new ArrayList<String> (friends);
     }
 }
