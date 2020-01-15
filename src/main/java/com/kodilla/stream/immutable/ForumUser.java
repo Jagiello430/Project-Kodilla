@@ -16,7 +16,7 @@ public final class ForumUser {
         this.userName = userName;
         this.realName = realName;
         this.birthDate = new Date(yearsOfBirthday,monthOfBirthday,dayOfMonth);
-        this.friends = friends;
+        this.friends =new ArrayList <String> (friends);
     }
     public String getUserName() {
         return userName;
