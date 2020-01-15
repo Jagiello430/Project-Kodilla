@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 public class StatisticCounting {
     Statistic statistic;
 
-
     public StatisticCounting(Statistic statistic){
         this.statistic = statistic;
     }
@@ -16,20 +15,20 @@ public class StatisticCounting {
                 .collect(Collectors.toList());
         return name.size();
     }
-    public double quantityPost(){
-        double quantityAllPost = statistic.postsCount();
+    public Integer quantityPost(){
+        Integer quantityAllPost = statistic.postsCount();
         return quantityAllPost;
     }
-    public double quantityCommit(){
-        double quantityAllCommit = statistic.commentsCount();
+    public Integer quantityCommit(){
+        Integer quantityAllCommit = statistic.commentsCount();
         return quantityAllCommit;
     }
-   /* public double averageOfPostPerUser(){
+    public double averageOfPostPerUser(){
         return quantityUser()/quantityPost();
     }
     public double averageOfCommitPerUser(){
         return quantityUser()/quantityCommit();
-    }*/
+    }
     public double averageOfCommitPerPost(){
         return quantityPost()/quantityCommit();
     }

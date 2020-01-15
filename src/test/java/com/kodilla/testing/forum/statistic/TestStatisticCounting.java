@@ -11,7 +11,7 @@ import static org.mockito.Mockito.when;
 
 public class TestStatisticCounting {
     @Test
-    public void testCalculateAdvStatics(){
+    public void testHowListUserIsNull(){
         Statistic statistics = mock(Statistic.class);
         StatisticCounting statisticCounting = new StatisticCounting(statistics);
         List<String> testList = new ArrayList<>();
