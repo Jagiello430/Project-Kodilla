@@ -3,18 +3,22 @@ package com.kodilla.testing.forum.statistic;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-
-public class TestStatistic {
+public class TestStatisticCounting {
     @Test
-    public void testCalculateAdvStatics(Statistic statistic){
+    public void testCalculateAdvStatics(){
         Statistic statistics = mock(Statistic.class);
         StatisticCounting statisticCounting = new StatisticCounting(statistics);
-        when(statistics.postsCount()).thenReturn(0);
+        List<String> testList = new ArrayList<>();
 
-        double testPostIs0 = statisticCounting.quantityPost();
+        when(statistics.usersNames()).thenReturn(testList);
+
+        int testPostIs0 = statisticCounting.quantityUser();
 
         Assert.assertEquals(0,testPostIs0);
     }
