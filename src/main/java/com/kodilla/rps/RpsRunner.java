@@ -4,20 +4,23 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RpsRunner {
-    public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    Random random = new Random();
+
+    int computerScore = 0;
+    int playerScore = 0;
+    boolean win = false;
+    int round = 0;
+
+    public void gameRules(){
         System.out.println("Zasady gry w papier, kamień i nożyce :" + "\n" +
                 "klawisz 1 - zagranie \"kamień\",\n" +
                 "klawisz 2 - zagranie \"papier\",\n" +
                 "klawisz 3 - zagranie \"nożyce\",\n" +
                 "klawisz 0 - zakończenie gry, poprzedzone pytaniem \"Czy na pewno zakończyć grę?\",\n" + "\n");
+    }
 
-        int computerScore = 0;
-        int playerScore = 0;
-        boolean win = false;
-        int round = 0;
-        Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
-
+    public void game(){
         while (!win){
             round ++;
             System.out.println("Runda: " + round + "\n" + "Score"+ "\n" +
@@ -30,7 +33,7 @@ public class RpsRunner {
             if (playerTurn == 1 && computerTurn == 2 ||
                     playerTurn == 2 && computerTurn == 3 ||
                     playerTurn == 3 && computerTurn == 1){
-                 computerScore ++;
+                computerScore ++;
                 System.out.println("komputer wygrał runde");
             }else if (playerTurn == 1 && computerTurn == 1||
                     playerTurn == 2 && computerTurn == 2||
@@ -60,5 +63,12 @@ public class RpsRunner {
                 win = true;
             }
         }
+    }
+
+    public static void main(String[] args) {
+        RpsRunner rpsRunner = new RpsRunner();
+
+        rpsRunner.gameRules();
+        rpsRunner.game();
     }
 }
