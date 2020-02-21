@@ -19,6 +19,7 @@ public class RpsRunner {
 
         rpsRunner.gameRules();
         rpsRunner.game();
+
     }
 
     public static void gameRules(){
@@ -40,7 +41,6 @@ public class RpsRunner {
             computerChoice();
             score();
             finalMassage();
-            exit();
         }
     }
     public CHOICES playerChoice(){
@@ -54,6 +54,8 @@ public class RpsRunner {
             case 3 :
                 return CHOICES.SCISSORS;
             case 0 :
+                System.out.println("Are you sure you want to finish the game??" + "\n" +
+                        "If you want to end the game press 0");
                 exit();
         }
         return playerChoice();
@@ -114,16 +116,10 @@ public class RpsRunner {
     }
 
     public void exit(){
-        if (playerTurn == 0) {
-            playerTurn = scanner.nextInt();
-            System.out.println("Are you sure you want to finish the game??" + "\n" +
-                    "If you want to end the game press 0");
-            int finish = scanner.nextInt();
-            if (finish == 0) {
-                 win = true;
-            }else {
-                win = false;
-            }
+        playerTurn = scanner.nextInt();
+        if (playerTurn == 0){
+            System.exit(0);
         }
     }
 }
+
