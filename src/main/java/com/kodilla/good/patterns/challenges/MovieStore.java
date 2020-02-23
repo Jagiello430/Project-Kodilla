@@ -25,7 +25,7 @@ public class MovieStore {
 
         return booksTitlesWithTranslations;
     }
-    public List<String> wordString() {
+    public List<String> words() {
         List<String> wordString = new ArrayList<>();
         wordString.add(getMovies().get("IM").get(0));
         wordString.add(getMovies().get("IM").get(1));
@@ -36,14 +36,13 @@ public class MovieStore {
 
         return wordString;
     }
-    public String words(){
-        return wordString().stream()
+    public String wordString() {
+        return words().stream()
                 .collect(Collectors.joining("! "));
-
     }
 
     public static void main(String[] args) {
         MovieStore movieStore = new MovieStore();
-        System.out.println(movieStore.words());
+        System.out.println(movieStore.wordString());
     }
 }
