@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class MovieStore {
+
     public Map<String, List<String>> getMovies() {
 
         List<String> ironManTranslations = new ArrayList<>();
@@ -25,24 +26,15 @@ public class MovieStore {
 
         return booksTitlesWithTranslations;
     }
-    public List<String> words() {
-        List<String> wordString = new ArrayList<>();
-        wordString.add(getMovies().get("IM").get(0));
-        wordString.add(getMovies().get("IM").get(1));
-        wordString.add(getMovies().get("AV").get(0));
-        wordString.add(getMovies().get("AV").get(1));
-        wordString.add(getMovies().get("FL").get(0));
-        wordString.add(getMovies().get("FL").get(1));
 
-        return wordString;
-    }
-    public String wordString() {
-        return words().stream()
+    public String contentModificationStream() {
+        return getMovies().entrySet().stream()
+                .flatMap(entry -> entry.getValue().stream())
                 .collect(Collectors.joining("! "));
     }
 
     public static void main(String[] args) {
         MovieStore movieStore = new MovieStore();
-        System.out.println(movieStore.wordString());
+        System.out.println(movieStore.contentModificationStream());
     }
 }
