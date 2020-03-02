@@ -1,7 +1,5 @@
 package com.kodilla.rps;
 
 public enum RESULT{
-    WIN(),
-    DRAW(),
-    LOSE()
+    WIN, DRAW, LOSE, ERROR
 }

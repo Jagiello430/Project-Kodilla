@@ -3,6 +3,9 @@ package com.kodilla.rps;
 import java.util.Random;
 import java.util.Scanner;
 
+import static com.kodilla.rps.CHOICES.*;
+import static com.kodilla.rps.RESULT.*;
+
 public class RpsRunner {
     Scanner scanner = new Scanner(System.in);
     Random random = new Random();
@@ -11,23 +14,14 @@ public class RpsRunner {
     private int computerScore = 0;
     private int playerScore = 0;
     private int round = 0;
-    private int playerTurn;
-    private int computerTurn;
+    private CHOICES playerTurn;
+    private CHOICES computerTurn;
 
     public static void main(String[] args) {
         RpsRunner rpsRunner = new RpsRunner();
+        System.out.println(getPossibleChoice());
 
-        rpsRunner.gameRules();
         rpsRunner.game();
-
-    }
-
-    public static void gameRules(){
-        System.out.println("Game rules :" + "\n" +
-                "Button 1 - \"Rock\",\n" +
-                "Button 2 - \"Paper\",\n" +
-                "Button 3 - \"Scissors\",\n" +
-                "Button 0 - End of the game \n" + "\n");
     }
 
     public void game() {
@@ -37,60 +31,16 @@ public class RpsRunner {
                     "Computer: " + computerScore + " Player: " + playerScore +
                     "\n");
             System.out.println("Select the button to play: ");
-            playerChoice();
-            computerChoice();
+            playerTurn = getMove(scanner.nextInt());
+            computerTurn = getMove(random.nextInt(5) + 1);
+
+           /* System.out.println(playerTurn);
+            System.out.println(computerTurn);*/
+
             score();
             finalMassage();
         }
     }
-    public CHOICES playerChoice(){
-        playerTurn = scanner.nextInt();
-
-        switch (playerTurn){
-            case 1 :
-                return CHOICES.ROCK;
-            case 2 :
-                return CHOICES.PAPER;
-            case 3 :
-                return CHOICES.SCISSORS;
-            case 0 :
-                System.out.println("Are you sure you want to finish the game??" + "\n" +
-                        "If you want to end the game press 0");
-                exit();
-        }
-        return playerChoice();
-    }
-
-    public CHOICES computerChoice(){
-        computerTurn = random.nextInt(3) + 1;
-
-        switch (computerTurn){
-            case 1 :
-                return CHOICES.ROCK;
-            case 2 :
-                return CHOICES.PAPER;
-            case 3 :
-                return CHOICES.SCISSORS;
-        }
-        return computerChoice();
-    }
-
-    public RESULT result(){
-        if (computerTurn == playerTurn) {
-            System.out.println("Draw");
-            return RESULT.DRAW;
-        }
-        switch (playerTurn){
-            case 1:
-                return (computerChoice() == CHOICES.SCISSORS ? RESULT.WIN : RESULT.LOSE);
-            case 2:
-                return (computerChoice() == CHOICES.ROCK ? RESULT.WIN : RESULT.LOSE);
-            case 3:
-                return (computerChoice() == CHOICES.PAPER ? RESULT.WIN : RESULT.LOSE);
-        }
-        return RESULT.LOSE;
-    }
-
     public int score(){
         switch (result()){
             case WIN:
@@ -99,8 +49,22 @@ public class RpsRunner {
             case LOSE:
                 System.out.println("Computer won this round");
                 return computerScore++;
+            case ERROR:
+                System.out.println("Invalid Button");
         }
         return 0;
+    }
+
+    public RESULT result(){
+        if (playerTurn == END_OF_THE_GAME) {
+            exit();
+        }else if (playerTurn.beats(computerTurn)) {
+            return WIN;
+        }else if(computerTurn.beats(playerTurn)) {
+            return LOSE;
+        }else
+            System.out.println("Draw");
+        return DRAW ;
     }
 
     public void finalMassage() {
@@ -116,8 +80,9 @@ public class RpsRunner {
     }
 
     public void exit(){
-        playerTurn = scanner.nextInt();
-        if (playerTurn == 0){
+        System.out.println("Are you sure you want to leave the game ??" + "\n" + "if so click Button 0 ");
+        playerTurn = getMove(scanner.nextInt());
+        if (playerTurn == END_OF_THE_GAME){
             System.exit(0);
         }
     }
