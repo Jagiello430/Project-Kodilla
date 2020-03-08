@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Calculator{
-
     @Autowired
     private Display display;
 
@@ -30,3 +29,4 @@ public class Calculator{
         return val;
     }
 }
+
