@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+import java.util.ArrayList;
+
 @Configuration
 public class BoardConfig {
 
@@ -16,21 +18,9 @@ public class BoardConfig {
         return new Board(taskList);
     }
 
-    @Bean(name = "toDoList")
+    @Bean
     @Scope("prototype")
-    public TaskList getListToDo() {
-        return new TaskList(getListToDo().getTasks());
-    }
-
-    @Bean(name = "inProgressList")
-    @Scope("prototype")
-    public TaskList getListInProgress() {
-        return new TaskList(getListInProgress().getTasks());
-    }
-
-    @Bean(name = "doneList")
-    @Scope("prototype")
-    public TaskList getListDone() {
-        return new TaskList(getListDone().getTasks());
+    public TaskList getTaskList() {
+        return new TaskList(new ArrayList<>());
     }
 }
