@@ -1,9 +1,9 @@
 package com.kodilla.patterns.factory.tasks;
 
 public final class PaintingTask implements Task {
-    final String taskName;
-    final String color;
-    final String whatToPaint;
+    private final String taskName;
+    private final String color;
+    private final String whatToPaint;
 
     public PaintingTask(String taskName, String color, String whatToPaint) {
         this.taskName = taskName;
@@ -13,7 +13,7 @@ public final class PaintingTask implements Task {
 
     @Override
     public void executeTask() {
-
+        System.out.println("you have to paint " + whatToPaint + " on the " + color );
     }
 
     @Override
