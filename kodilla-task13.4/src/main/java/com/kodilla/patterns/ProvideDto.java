@@ -1,10 +1,10 @@
 package com.kodilla.patterns;
 
-public class RentalDto {
+public class ProvideDto {
     public Provider provider;
     public boolean isArrivals;
 
-    public RentalDto(final Provider provider, final boolean isArrivals) {
+    public ProvideDto(final Provider provider, final boolean isArrivals) {
         this.provider = provider;
         this.isArrivals = isArrivals;
     }

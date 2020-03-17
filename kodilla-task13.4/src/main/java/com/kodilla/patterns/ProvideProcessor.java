@@ -1,12 +1,12 @@
 package com.kodilla.patterns;
 
-public class RentalProcessor {
+public class ProvideProcessor {
     private InformationService informationService;
-    private RentalService rentalService;
+    private ProvideService rentalService;
     private RentalRepository rentalRepository;
 
-    public RentalProcessor(final MailService informationService,
-                           final RentalService rentalService,
+    public ProvideProcessor(final MailService informationService,
+                           final ProvideService rentalService,
                            final RentalRepository rentalRepository) {
         this.informationService = informationService;
         this.rentalService = rentalService;
