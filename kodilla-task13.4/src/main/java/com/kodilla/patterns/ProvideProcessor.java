@@ -13,15 +13,15 @@ public class ProvideProcessor {
         this.rentalRepository = rentalRepository;
     }
 
-    public ProvideDto process(final ProvideRequest rentRequest) {
-        boolean isRented = rentalService.rent(rentRequest.getProvider(), rentRequest.getDeliveryDate(),
-                rentRequest.getTypeOfDelivery());
-        if(isRented) {
-            informationService.inform(rentRequest.getProvider());
-            rentalRepository.createOrder(rentRequest.getProvider(), rentRequest.getDeliveryDate(), rentRequest.getTypeOfDelivery());
-            return new ProvideDto(rentRequest.getProvider(), true);
+    public ProvideDto process(final ProvideRequest provideRequestRequest) {
+        boolean isProvide = rentalService.rent(provideRequestRequest.getProvider(), provideRequestRequest.getDeliveryDate(),
+                provideRequestRequest.getTypeOfDelivery());
+        if(isProvide) {
+            informationService.inform(provideRequestRequest.getProvider());
+            rentalRepository.createOrder(provideRequestRequest.getProvider(), provideRequestRequest.getDeliveryDate(), provideRequestRequest.getTypeOfDelivery());
+            return new ProvideDto(provideRequestRequest.getProvider(), true);
         } else {
-            return new ProvideDto(rentRequest.getProvider(), false);
+            return new ProvideDto(provideRequestRequest.getProvider(), false);
         }
     }
 }
