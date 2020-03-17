@@ -31,6 +31,6 @@ public class TaskFactoryTestSuite {
         //When
         Task drivingTask = taskFactory.makeTask(TaskFactory.DRIVINGTASK);
         //Then
-        Assert.assertFalse(drivingTask.isTaskExecuted());
+        Assert.assertTrue(drivingTask.isTaskExecuted());
     }
 }

@@ -23,6 +23,7 @@ public final class DrivingTask implements Task{
 
     @Override
     public boolean isTaskExecuted() {
-        return false;
+        System.out.println("done");
+        return true;
     }
 }

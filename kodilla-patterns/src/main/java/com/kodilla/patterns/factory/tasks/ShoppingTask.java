@@ -23,6 +23,7 @@ public final class ShoppingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
+        System.out.println("done");
         return true;
     }
 }

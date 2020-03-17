@@ -23,6 +23,7 @@ public final class PaintingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
+        System.out.println("done");
         return true;
     }
 }
