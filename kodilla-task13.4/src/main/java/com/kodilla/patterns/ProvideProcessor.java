@@ -3,25 +3,25 @@ package com.kodilla.patterns;
 public class ProvideProcessor {
     private InformationService informationService;
     private ProvideService rentalService;
-    private RentalRepository rentalRepository;
+    private ProvideRepository rentalRepository;
 
     public ProvideProcessor(final MailService informationService,
                            final ProvideService rentalService,
-                           final RentalRepository rentalRepository) {
+                           final ProvideRepository rentalRepository) {
         this.informationService = informationService;
         this.rentalService = rentalService;
         this.rentalRepository = rentalRepository;
     }
 
-    public RentalDto process(final RentRequest rentRequest) {
+    public ProvideDto process(final ProvideRequest rentRequest) {
         boolean isRented = rentalService.rent(rentRequest.getProvider(), rentRequest.getDeliveryDate(),
                 rentRequest.getTypeOfDelivery());
         if(isRented) {
             informationService.inform(rentRequest.getProvider());
             rentalRepository.createOrder(rentRequest.getProvider(), rentRequest.getDeliveryDate(), rentRequest.getTypeOfDelivery());
-            return new RentalDto(rentRequest.getProvider(), true);
+            return new ProvideDto(rentRequest.getProvider(), true);
         } else {
-            return new RentalDto(rentRequest.getProvider(), false);
+            return new ProvideDto(rentRequest.getProvider(), false);
         }
     }
 }

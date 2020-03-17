@@ -2,11 +2,11 @@ package com.kodilla.patterns;
 
 public class ProductOrderService {
     public static void main(String[] args) {
-        RentRequestRetriever rentRequestRetriever = new RentRequestRetriever();
-        RentRequest rentRequest = rentRequestRetriever.retriever();
+        ProvideRequestRetriever provideRequestRetriever = new ProvideRequestRetriever();
+        ProvideRequest provideRequest = provideRequestRetriever.retriever();
 
-        RentalProcessor orderProcessor = new RentalProcessor(
-                new MailService(), new ProductRentalService(), new ProductRentalRepository());
-        orderProcessor.process(rentRequest);
+        ProvideProcessor orderProcessor = new ProvideProcessor(
+                new MailService(), new ProductProvideService(), new ProductProvideRepository());
+        orderProcessor.process(provideRequest);
     }
 }

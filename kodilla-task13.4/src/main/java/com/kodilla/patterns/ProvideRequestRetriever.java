@@ -3,9 +3,8 @@ package com.kodilla.patterns;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class RentRequestRetriever {
-
-    public RentRequest retriever() {
+public class ProvideRequestRetriever {
+    public ProvideRequest retriever() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("name company: ");
         String nameCompany = scanner.nextLine();
@@ -30,7 +29,7 @@ public class RentRequestRetriever {
         String typeOfDelivery = type;
         LocalDate deliveryDate = LocalDate.of(years,month,day);
 
-
-        return new RentRequest(provider,deliveryDate,typeOfDelivery);
+        return new ProvideRequest(provider,deliveryDate,typeOfDelivery);
     }
 }
+
