@@ -1,21 +1,13 @@
 package com.kodilla.patterns.singleton;
 
-public class Logger {
-    private static volatile Logger loggerInstance = null;
+public enum Logger {
+    INSTANCE;
     private String lastLog = "";
 
-    private Logger () {
+    Logger() {
     }
-
     public static Logger getInstance() {
-        if (loggerInstance == null) {
-            synchronized (Logger.class) {
-                if(loggerInstance == null) {
-                    loggerInstance = new Logger();
-                }
-            }
-        }
-        return loggerInstance;
+        return INSTANCE;
     }
 
     public void log(String log) {
