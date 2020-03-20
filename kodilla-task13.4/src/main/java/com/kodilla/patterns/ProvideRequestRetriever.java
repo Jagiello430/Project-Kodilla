@@ -15,9 +15,6 @@ public class ProvideRequestRetriever {
         System.out.print("email: ");
         String email = scanner.nextLine();
 
-        System.out.println("type delivery: ");
-        String type = scanner.nextLine();
-
         System.out.print("arrive date year: ");
         int years = scanner.nextInt();
         System.out.print("month: ");
@@ -25,11 +22,19 @@ public class ProvideRequestRetriever {
         System.out.print("day: ");
         int day = scanner.nextInt();
 
-        Provider provider = new Provider(nameCompany, nip, email);
-        String typeOfDelivery = type;
-        LocalDate deliveryDate = LocalDate.of(years,month,day);
+        System.out.print("amount of products: ");
+        int amountOfProducts = scanner.nextInt();
 
-        return new ProvideRequest(provider,deliveryDate,typeOfDelivery);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i <= amountOfProducts; i++) {
+            stringBuilder.append(scanner.nextLine()).append(" ");
+            System.out.println("product delivery: ");
+        }
+
+        Provider provider = new Provider(nameCompany, nip, email);
+        LocalDate deliveryDate = LocalDate.of(years,month,day);
+        return new ProvideRequest(provider,deliveryDate,amountOfProducts,stringBuilder);
     }
 }
 

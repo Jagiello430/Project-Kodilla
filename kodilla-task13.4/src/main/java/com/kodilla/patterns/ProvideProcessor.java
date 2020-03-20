@@ -2,23 +2,23 @@ package com.kodilla.patterns;
 
 public class ProvideProcessor {
     private InformationService informationService;
-    private ProvideService rentalService;
-    private ProvideRepository rentalRepository;
+    private ProvideService provideService;
+    private ProvideRepository provideRepository;
 
     public ProvideProcessor(final MailService informationService,
-                           final ProvideService rentalService,
-                           final ProvideRepository rentalRepository) {
+                           final ProvideService provideService,
+                           final ProvideRepository provideRepository) {
         this.informationService = informationService;
-        this.rentalService = rentalService;
-        this.rentalRepository = rentalRepository;
+        this.provideService = provideService;
+        this.provideRepository = provideRepository;
     }
 
     public ProvideDto process(final ProvideRequest provideRequestRequest) {
-        boolean isProvide = rentalService.rent(provideRequestRequest.getProvider(), provideRequestRequest.getDeliveryDate(),
-                provideRequestRequest.getTypeOfDelivery());
+        boolean isProvide = provideService.order(provideRequestRequest.getProvider(), provideRequestRequest.getDeliveryDate(),
+                provideRequestRequest.getProductOfDelivery());
         if(isProvide) {
             informationService.inform(provideRequestRequest.getProvider());
-            rentalRepository.createOrder(provideRequestRequest.getProvider(), provideRequestRequest.getDeliveryDate(), provideRequestRequest.getTypeOfDelivery());
+            provideRepository.createOrder(provideRequestRequest.getProvider(), provideRequestRequest.getDeliveryDate(), provideRequestRequest.getProductOfDelivery());
             return new ProvideDto(provideRequestRequest.getProvider(), true);
         } else {
             return new ProvideDto(provideRequestRequest.getProvider(), false);

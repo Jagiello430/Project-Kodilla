@@ -5,12 +5,14 @@ import java.time.LocalDate;
 public class ProvideRequest {
     private Provider provider;
     private LocalDate deliveryDate;
-    private String typeOfDelivery;
+    private int amountOfProducts;
+    private StringBuilder productOfDelivery;
 
-    public ProvideRequest(Provider provider, LocalDate deliveryDate, String typeOfDelivery) {
+    public ProvideRequest(Provider provider, LocalDate deliveryDate, int amountOfProducts, StringBuilder productOfDelivery) {
         this.provider = provider;
         this.deliveryDate = deliveryDate;
-        this.typeOfDelivery = typeOfDelivery;
+        this.amountOfProducts = amountOfProducts;
+        this.productOfDelivery = productOfDelivery;
     }
 
     public Provider getProvider() {
@@ -21,16 +23,21 @@ public class ProvideRequest {
         return deliveryDate;
     }
 
-    public String getTypeOfDelivery() {
-        return typeOfDelivery;
+    public int getAmountOfProducts() {
+        return amountOfProducts;
+    }
+
+    public StringBuilder getProductOfDelivery() {
+        return productOfDelivery;
     }
 
     @Override
     public String toString() {
-        return "RentRequest{" +
+        return "ProvideRequest{" +
                 "provider=" + provider +
                 ", deliveryDate=" + deliveryDate +
-                ", typeOfDelivery='" + typeOfDelivery + '\'' +
+                ", amountOfProducts=" + amountOfProducts +
+                ", productOfDelivery='" + productOfDelivery + '\'' +
                 '}';
     }
 }
