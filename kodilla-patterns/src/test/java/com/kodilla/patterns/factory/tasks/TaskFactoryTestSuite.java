@@ -1,6 +1,5 @@
 package com.kodilla.patterns.factory.tasks;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 public class TaskFactoryTestSuite {
@@ -11,9 +10,9 @@ public class TaskFactoryTestSuite {
         //When
         Task shoppingTask = taskFactory.makeTask(TaskFactory.SHOPPINGTASK);
         //Then
-        Assert.assertTrue(shoppingTask.isTaskExecuted());
         shoppingTask.getTaskName();
         shoppingTask.executeTask();
+        shoppingTask.isTaskExecuted();
     }
 
     @Test
@@ -23,9 +22,8 @@ public class TaskFactoryTestSuite {
         //When
         Task paintingTask = taskFactory.makeTask(TaskFactory.PAINTINGTASK);
         //Then
-        //Assert.assertTrue(paintingTask.isTaskExecuted());
         paintingTask.getTaskName();
-        paintingTask.executeTask();
+        paintingTask.isTaskExecuted();
     }
 
     @Test
@@ -35,8 +33,8 @@ public class TaskFactoryTestSuite {
         //When
         Task drivingTask = taskFactory.makeTask(TaskFactory.DRIVINGTASK);
         //Then
-        Assert.assertTrue(drivingTask.isTaskExecuted());
         drivingTask.getTaskName();
         drivingTask.executeTask();
+        drivingTask.isTaskExecuted();
     }
 }

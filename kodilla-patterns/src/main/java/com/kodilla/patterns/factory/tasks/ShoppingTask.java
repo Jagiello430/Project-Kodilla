@@ -13,12 +13,9 @@ public final class ShoppingTask implements Task {
     }
 
     @Override
-    public void executeTask() {
-        if (isExecuted){
-            System.out.println("done");
-        } else {
-            System.out.println("not done");
-        }
+    public boolean executeTask() {
+        System.out.println("You have to buy " + whatToBuy + " and pay " + quantity);
+        return isExecuted = true;
     }
 
     @Override
@@ -28,7 +25,12 @@ public final class ShoppingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        System.out.println("You have to buy " + whatToBuy + " and pay " + quantity);
-        return isExecuted = true;
+        if (isExecuted){
+            System.out.println("done");
+            return true;
+        } else {
+            System.out.println("not done");
+            return false;
+        }
     }
 }

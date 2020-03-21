@@ -13,12 +13,9 @@ public final class PaintingTask implements Task {
     }
 
     @Override
-    public void executeTask() {
-        if (isExecuted){
-            System.out.println("done");
-        } else {
-            System.out.println("not done");
-        }
+    public boolean executeTask() {
+        System.out.println("you have to paint " + whatToPaint + " on the " + color );
+        return isExecuted = true;
     }
 
     @Override
@@ -28,7 +25,12 @@ public final class PaintingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        System.out.println("you have to paint " + whatToPaint + " on the " + color );
-        return isExecuted = true;
+        if (isExecuted){
+            System.out.println("done");
+            return true;
+        } else {
+            System.out.println("not done");
+            return false;
+        }
     }
 }
