@@ -1,6 +1,6 @@
 package com.kodilla.hibernate.tasklist.dao;
 
-import com.kodilla.hibernate.tasklist.TaskList;
+import com.kodilla.hibernate.tasklist.TasksList;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,9 +12,9 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TaskListDaoTestSuite {
+public class TasksListDaoTestSuite {
     @Autowired
-    private TaskListDao taskListDao;
+    private TasksListDao tasksListDao;
     private static final String LISTNAME = "List name";
     private static final String DESCRIPTION = "List with task";
 
@@ -22,18 +22,18 @@ public class TaskListDaoTestSuite {
     public void testFindByListName() {
 
         //Given
-        TaskList taskList = new TaskList(LISTNAME,DESCRIPTION);
-        taskListDao.save(taskList);
+        TasksList taskList = new TasksList(LISTNAME,DESCRIPTION);
+        tasksListDao.save(taskList);
         String nameList = taskList.getListName();
 
         //When
-        List<TaskList> readTaskList = taskListDao.findByListName(nameList);
+        List<TasksList> readTaskList = tasksListDao.findByListName(nameList);
         int id = taskList.getId();
 
         //Then
         Assert.assertEquals(1,readTaskList.size());
 
         //cleanUp
-        taskListDao.deleteById(id);
+        tasksListDao.deleteById(id);
     }
 }
