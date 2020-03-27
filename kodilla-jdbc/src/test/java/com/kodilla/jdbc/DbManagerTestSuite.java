@@ -12,14 +12,14 @@ public class DbManagerTestSuite {
     public void testConnect() throws SQLException {
         //Given
         //When
-        DbManager dbManager = DbManager.getInstance();
+        DbManager dbManager = DbManager.INSTANCE;
         //Then
         Assert.assertNotNull(dbManager.getConnection());
     }
     @Test
     public void testSelectUsers() throws SQLException {
         //Given
-        DbManager dbManager = DbManager.getInstance();
+        DbManager dbManager = DbManager.INSTANCE;
         //When
         String sqlQuery = "SELECT * FROM USERS";
         Statement statement = dbManager.getConnection().createStatement();
@@ -39,7 +39,7 @@ public class DbManagerTestSuite {
     @Test
     public void testSelectUsersAndPosts() throws SQLException {
         //Given
-        DbManager dbManager = DbManager.getInstance();
+        DbManager dbManager = DbManager.INSTANCE;
         //When
         String sqlQuery = "SELECT U.FIRSTNAME, U.LASTNAME, COUNT(*) AS POSTS_NUMBER FROM USERS U JOIN POSTS P ON U.ID = P.USER_ID GROUP BY P.USER_ID HAVING COUNT(*) > 1;";
         Statement statement = dbManager.getConnection().createStatement();
