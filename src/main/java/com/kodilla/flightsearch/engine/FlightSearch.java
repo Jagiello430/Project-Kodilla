@@ -1,19 +1,17 @@
-package com.kodilla.flightsearch;
+package com.kodilla.flightsearch.engine;
 
 import com.kodilla.flightsearch.flight.Airport;
 import com.kodilla.flightsearch.flight.FlightDataBase;
 import com.kodilla.flightsearch.flight.FlightDateBaseFromCity;
 import com.kodilla.flightsearch.flight.FlightList;
-import org.junit.Assert;
-import org.junit.Test;
+import com.kodilla.flightsearch.user.User;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
-public class TestSuite {
-
+public class FlightSearch implements ServiceFlight{
     public FlightDataBase list() {
-
         Airport gdansk = new Airport("gdansk");
         Airport wroclaw = new Airport("wroclaw");
         Airport cracow = new Airport("cracow");
@@ -76,59 +74,44 @@ public class TestSuite {
         return project;
     }
 
-    @Test
-    public void testFindFlightFromWroclaw() {
-        Airport wroclaw = new Airport("wroclaw");
-        Set<FlightList> test1 = list().getFlightList().stream()
-                .flatMap(flightDateBaseFromCity -> flightDateBaseFromCity.getFlightLists().stream())
-                .filter(x -> x.getDeparture().equals(wroclaw))
-                .collect(Collectors.toSet());
+    @Override
+    public boolean findFlightFromAirport1ToAirport2(User user, String departureAirportName, String arrivalAirportName) {
+        {
+            Airport airport1 = new Airport(departureAirportName);
+            Airport airport2 = new Airport(arrivalAirportName);
 
-        System.out.println(test1);
-        int size = test1.size();
-        Assert.assertEquals(size,3);
-    }
+            List<Airport> listFlightFromAirport1 = list().getFlightList().stream()
+                    .flatMap(flightDateBaseFromCity -> flightDateBaseFromCity.getFlightLists().stream())
+                    .filter(flightList -> flightList.getDeparture().equals(airport1))
+                    .map(FlightList::getArrival)
+                    .collect(Collectors.toList());
 
-    @Test
-    public void testFindFlightToGdansk() {
-        Airport gdansk = new Airport("gdansk");
-        Set<FlightList> test2 = list().getFlightList().stream()
-                .flatMap(flightDateBaseFromCity -> flightDateBaseFromCity.getFlightLists().stream())
-                .filter(x -> x.getArrival().equals(gdansk))
-                .collect(Collectors.toSet());
+            List<Airport> listFlightToAirport2 = list().getFlightList().stream()
+                    .flatMap(flightDateBaseFromCity -> flightDateBaseFromCity.getFlightLists().stream())
+                    .filter(x -> x.getArrival().equals(airport2))
+                    .map(FlightList::getDeparture)
+                    .collect(Collectors.toList());
 
-        System.out.println(test2);
-        int size = test2.size();
-        Assert.assertEquals(size,3);
-    }
+            List<FlightList> listFlightFromAirport1ToAirport2 = list().getFlightList().stream()
+                    .flatMap(flightDateBaseFromCity -> flightDateBaseFromCity.getFlightLists().stream())
+                    .filter(x -> x.getDeparture().equals(airport1) && x.getArrival().equals(airport2))
+                    .collect(Collectors.toList());
 
-    @Test
-    public void testFindFlightFromWroclawToGdanskByAnotherCity() {
-        Airport wroclaw = new Airport("wroclaw");
-        Airport gdansk = new Airport("gdansk");
-        List<Airport> test1 = list().getFlightList().stream()
-                .flatMap(flightDateBaseFromCity -> flightDateBaseFromCity.getFlightLists().stream())
-                .filter(flightList -> flightList.getDeparture().equals(wroclaw))
-                .map(FlightList::getArrival)
-                .collect(Collectors.toList());
-
-        List<Airport> test2 = list().getFlightList().stream()
-                .flatMap(flightDateBaseFromCity -> flightDateBaseFromCity.getFlightLists().stream())
-                .filter(x -> x.getArrival().equals(gdansk))
-                .map(FlightList::getDeparture)
-                .collect(Collectors.toList());
-
-        List<Airport> testList = new ArrayList<>();
-        for (int i = 0; i < test1.size(); i++) {
-            Airport airport1 = test1.get(i);
-            for (int j = 0; j < test2.size(); j++){
-                Airport airport2 = test2.get(j);
-                if (airport1.getNameAirport() == airport2.getNameAirport()){
-                    testList.add(airport1);
+            List<Airport> testList = new ArrayList<>();
+            for (int i = 0; i < listFlightFromAirport1.size(); i++) {
+                Airport airport3 = listFlightFromAirport1.get(i);
+                for (int j = 0; j < listFlightToAirport2.size(); j++) {
+                    Airport airport4 = listFlightToAirport2.get(j);
+                    if (airport3.getNameAirport() == airport4.getNameAirport()) {
+                        testList.add(airport3);
+                    }
                 }
             }
+            System.out.println("Lista lotów bezpośrednich z " + airport1.getNameAirport() + " do "
+                    + airport2.getNameAirport() + "\n" + listFlightFromAirport1ToAirport2);
+            System.out.println("Lista miast przez które można dolecieć z " + airport1.getNameAirport() +
+                    " do " + airport2.getNameAirport() + "\n" + testList);
         }
-        System.out.println(testList);
-        Assert.assertEquals(testList.size(),1);
+        return true;
     }
 }

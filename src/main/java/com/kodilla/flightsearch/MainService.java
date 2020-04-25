@@ -1,16 +1,18 @@
 package com.kodilla.flightsearch;
 
-import com.kodilla.flightsearch.flight.Airport;
-import com.kodilla.flightsearch.flight.FlightSearch;
+import com.kodilla.flightsearch.engine.FlightSearch;
+import com.kodilla.flightsearch.mail.MailService;
+import com.kodilla.flightsearch.process.FlightProcess;
+import com.kodilla.flightsearch.repository.UserRepository;
+import com.kodilla.flightsearch.retriever.UserRequest;
+import com.kodilla.flightsearch.retriever.UserRetrieverRequest;
 
 public class MainService {
     public static void main(java.lang.String[] args) {
-        Airport flight = new Airport("aaa");
-        FlightSearch flightSearch = new FlightSearch();
+        UserRetrieverRequest userRetrieverRequest = new UserRetrieverRequest();
+        UserRequest userRequest = userRetrieverRequest.retriever();
 
-        //System.out.println(flightSearch.findFlightFromWroclaw());
-        //System.out.println(flightSearch.findFlightToGdansk());
-        //System.out.println(flightSearch.findFlightFromWroclawToGdansk());
-
+        FlightProcess flightProcess = new FlightProcess(new MailService(), new UserRepository(), new FlightSearch());
+        flightProcess.process(userRequest);
     }
 }
